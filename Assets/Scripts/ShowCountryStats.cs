@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ShowCountryStats : MonoBehaviour
@@ -64,5 +65,10 @@ public class ShowCountryStats : MonoBehaviour
     public void Disappear()
     {
         StatsCanvas.SetActive(false);
+    }
+
+    public void Highlight()
+    {
+        this.GetComponent<Image>().color = Color.red;
     }
 }

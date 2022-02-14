@@ -9,7 +9,6 @@ public class GameManagerGeneral : MonoBehaviour
 {
     bool done = false;
     public float timeBetweenTicks = 2f;
-    // Start is called before the first frame update
 
     [Header("Country Vars")]
     public Country_M[] countries;
@@ -52,6 +51,7 @@ public class GameManagerGeneral : MonoBehaviour
     public float hpCounter = 0;
 
     public Image fadeImage;
+    public Material mat;
 
     void Start()
     {
@@ -146,6 +146,8 @@ public class GameManagerGeneral : MonoBehaviour
                 advisorText.SetText("War ravages through " + countries[maxID].countryName +
                 " all sectors suffer heavy damage from this tragedy.");
 
+                StartCoroutine(ChangeToRed());
+
                 countries[maxID].ecologic -= 5;
                 countries[maxID].economic -= 5;
                 countries[maxID].social -= 5;
@@ -156,6 +158,8 @@ public class GameManagerGeneral : MonoBehaviour
                 minID = FindWeakestCountry();
                 advisorText.SetText("Even in the direst of times the continent of " + countries[minID].countryName +
                 " has found a way to gather it's forces, all stats are recovered significantly!");
+                mat.color = Color.red;
+                StartCoroutine(ChangeToGreen());
 
                 countries[minID].ecologic += 5;
                 countries[minID].economic += 5;
@@ -170,6 +174,8 @@ public class GameManagerGeneral : MonoBehaviour
                 advisorText.SetText(countries[tempRand].countryName +
                 " had an unexpected windfall, all stats are increased moderatly!");
 
+                StartCoroutine(ChangeToGreen());
+
                 countries[tempRand].ecologic += 5;
                 countries[tempRand].economic += 5;
                 countries[tempRand].social += 5;
@@ -182,6 +188,8 @@ public class GameManagerGeneral : MonoBehaviour
 
                 advisorText.SetText("The turtles in the coasts of " + countries[tempRand].countryName +
                 " have evolved and revolted against the people, the ecological sector is thriving but all other sectors have suffered damage.");
+
+                StartCoroutine(ChangeToRed());
 
                 countries[tempRand].ecologic += 10;
                 countries[tempRand].economic -= 5;
@@ -196,6 +204,8 @@ public class GameManagerGeneral : MonoBehaviour
                 advisorText.SetText("For the people! The masses of " + countries[tempRand].countryName +
                 " rise against all other sectors to fight for humanitarian rights, sacrificing the health of other sectors in the process.");
 
+                StartCoroutine(ChangeToRed());
+
                 countries[tempRand].ecologic -= 5;
                 countries[tempRand].economic -= 5;
                 countries[tempRand].social += 10;
@@ -208,6 +218,8 @@ public class GameManagerGeneral : MonoBehaviour
 
                 advisorText.SetText("The wealthy aristocrats of " + countries[tempRand].countryName +
                 " are in control and will stop at nothing to make sure their sector thrives, even if it costs the wealth of all other sectors...");
+
+                StartCoroutine(ChangeToRed());
 
                 countries[tempRand].ecologic -= 5;
                 countries[tempRand].economic += 10;
@@ -222,6 +234,8 @@ public class GameManagerGeneral : MonoBehaviour
                 advisorText.SetText("Pure Chaos! The sectors of " + countries[tempRand].countryName +
                 " are all randomly affected in either a positive or negative way.");
 
+                StartCoroutine(ChangeToGreen());
+
                 countries[tempRand].ecologic += Random.Range(-5, 5);
                 countries[tempRand].economic += Random.Range(-5, 5);
                 countries[tempRand].social += Random.Range(-5, 5);
@@ -234,6 +248,8 @@ public class GameManagerGeneral : MonoBehaviour
 
                 advisorText.SetText("Pure Luck! The sectors of " + countries[tempRand].countryName +
                 " are all randomly affected in a positive way.");
+
+                StartCoroutine(ChangeToGreen());
 
                 countries[tempRand].ecologic += Random.Range(1, 10);
                 countries[tempRand].economic += Random.Range(1, 10);
@@ -248,6 +264,8 @@ public class GameManagerGeneral : MonoBehaviour
                 advisorText.SetText("Pure Missfortune! The sectors of " + countries[tempRand].countryName +
                 " are all randomly affected in a negative way.");
 
+                StartCoroutine(ChangeToRed());
+
                 countries[tempRand].ecologic -= Random.Range(1, 10);
                 countries[tempRand].economic -= Random.Range(1, 10);
                 countries[tempRand].social -= Random.Range(1, 10);
@@ -261,6 +279,8 @@ public class GameManagerGeneral : MonoBehaviour
                 advisorText.SetText("Prosperity breeds prosperity." + countries[maxID].countryName +
                 " has gained a significant increase to all stats.");
 
+                StartCoroutine(ChangeToGreen());
+
                 countries[maxID].ecologic += Random.Range(3, 10);
                 countries[maxID].economic += Random.Range(3, 10);
                 countries[maxID].social += Random.Range(3, 10);
@@ -273,6 +293,8 @@ public class GameManagerGeneral : MonoBehaviour
 
                 advisorText.SetText("Misery breeds Misery." + countries[minID].countryName +
                 " has taken significant damage to all stats.");
+
+                StartCoroutine(ChangeToRed());
 
                 countries[maxID].ecologic -= Random.Range(3, 10);
                 countries[maxID].economic -= Random.Range(3, 10);
@@ -352,6 +374,24 @@ public class GameManagerGeneral : MonoBehaviour
             c.ecologic += c.ecoGrowth;
             c.economic += c.econGrowth;
         }
+    }
+
+    IEnumerator ChangeToRed()
+    {
+        mat.color = Color.red;
+
+        yield return new WaitForSeconds(1.5f);
+
+        mat.color = Color.white;
+    }
+
+    IEnumerator ChangeToGreen()
+    {
+        mat.color = Color.green;
+
+        yield return new WaitForSeconds(1.5f);
+
+        mat.color = Color.white;
     }
 
     #endregion
