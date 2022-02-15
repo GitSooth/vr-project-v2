@@ -59,12 +59,13 @@ public class ShowCountryStats : MonoBehaviour
 
     public void Appear()
     {
-        StatsCanvas.SetActive(true);
+        this.GetComponent<Animator>().Play("CS_PopUp");
+
     }
 
     public void Disappear()
     {
-        StatsCanvas.SetActive(false);
+        this.GetComponent<Animator>().Play("CSDefaultOff");
     }
 
     public void Highlight()

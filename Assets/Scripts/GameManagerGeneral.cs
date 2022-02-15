@@ -53,6 +53,10 @@ public class GameManagerGeneral : MonoBehaviour
     public Image fadeImage;
     public Material mat;
 
+    public Image newsImage;
+
+    public Sprite[] eventImages;
+
     void Start()
     {
         //Cursor.lockState = CursorLockMode.Locked;
@@ -64,7 +68,6 @@ public class GameManagerGeneral : MonoBehaviour
         randomRange = 0;
 
         graceTimerIsOn = true;
-        advisorText.SetText("");
     }
 
     void Update()
@@ -141,7 +144,7 @@ public class GameManagerGeneral : MonoBehaviour
         switch (Random.Range(0, 11))
         {
             case 0:
-
+                newsImage.sprite = eventImages[0];
                 maxID = FindStrongestCountry();
                 advisorText.SetText("War ravages through " + countries[maxID].countryName +
                 " all sectors suffer heavy damage from this tragedy.");
@@ -154,11 +157,12 @@ public class GameManagerGeneral : MonoBehaviour
                 break;
 
             case 1:
-
+                newsImage.sprite = eventImages[1];
                 minID = FindWeakestCountry();
                 advisorText.SetText("Even in the direst of times the continent of " + countries[minID].countryName +
                 " has found a way to gather it's forces, all stats are recovered significantly!");
                 mat.color = Color.red;
+
                 StartCoroutine(ChangeToGreen());
 
                 countries[minID].ecologic += 5;
@@ -168,7 +172,7 @@ public class GameManagerGeneral : MonoBehaviour
                 break;
 
             case 2:
-
+                newsImage.sprite = eventImages[2];
                 int tempRand = Random.Range(0, 6);
 
                 advisorText.SetText(countries[tempRand].countryName +
@@ -183,7 +187,7 @@ public class GameManagerGeneral : MonoBehaviour
                 break;
 
             case 3:
-
+                newsImage.sprite = eventImages[3];
                 tempRand = Random.Range(0, 6);
 
                 advisorText.SetText("The turtles in the coasts of " + countries[tempRand].countryName +
@@ -198,7 +202,7 @@ public class GameManagerGeneral : MonoBehaviour
                 break;
 
             case 4:
-
+                newsImage.sprite = eventImages[4];
                 tempRand = Random.Range(0, 6);
 
                 advisorText.SetText("For the people! The masses of " + countries[tempRand].countryName +
@@ -213,7 +217,7 @@ public class GameManagerGeneral : MonoBehaviour
                 break;
 
             case 5:
-
+                newsImage.sprite = eventImages[5];
                 tempRand = Random.Range(0, 6);
 
                 advisorText.SetText("The wealthy aristocrats of " + countries[tempRand].countryName +
@@ -228,7 +232,7 @@ public class GameManagerGeneral : MonoBehaviour
                 break;
 
             case 6:
-
+                newsImage.sprite = eventImages[6];
                 tempRand = Random.Range(0, 6);
 
                 advisorText.SetText("Pure Chaos! The sectors of " + countries[tempRand].countryName +
@@ -243,7 +247,7 @@ public class GameManagerGeneral : MonoBehaviour
                 break;
 
             case 7:
-
+                newsImage.sprite = eventImages[7];
                 tempRand = Random.Range(0, 6);
 
                 advisorText.SetText("Pure Luck! The sectors of " + countries[tempRand].countryName +
@@ -258,7 +262,7 @@ public class GameManagerGeneral : MonoBehaviour
                 break;
 
             case 8:
-
+                newsImage.sprite = eventImages[8];
                 tempRand = Random.Range(0, 6);
 
                 advisorText.SetText("Pure Missfortune! The sectors of " + countries[tempRand].countryName +
@@ -273,7 +277,7 @@ public class GameManagerGeneral : MonoBehaviour
                 break;
 
             case 9:
-
+                newsImage.sprite = eventImages[9];
                 maxID = FindStrongestCountry();
 
                 advisorText.SetText("Prosperity breeds prosperity." + countries[maxID].countryName +
@@ -288,7 +292,7 @@ public class GameManagerGeneral : MonoBehaviour
                 break;
 
             case 10:
-
+                newsImage.sprite = eventImages[10];
                 maxID = FindWeakestCountry();
 
                 advisorText.SetText("Misery breeds Misery." + countries[minID].countryName +

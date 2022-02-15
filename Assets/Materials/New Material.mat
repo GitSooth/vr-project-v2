@@ -101,7 +101,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - Color_ECF8CAE2: {r: 0.46724582, g: 1, b: 0, a: 0}
+    - Color_ECF8CAE2: {r: 0, g: 0.80679727, b: 1, a: 0}
     - Vector2_9078D0AE: {r: 1, g: 5, b: 0, a: 0}
     - _CameraFadeParams: {r: 0, g: Infinity, b: 0, a: 0}
     - _Color: {r: 0, g: 0.7490196, b: 1, a: 1}
