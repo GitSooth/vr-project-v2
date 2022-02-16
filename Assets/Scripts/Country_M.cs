@@ -159,10 +159,17 @@ public class Country_M : MonoBehaviour
         {
             case "social":
 
-                if((social += ammount) < -5 && skillID == 2)
+                if(skillID == 2 )
                 {
-                    actualSocial = social += ammount;
-                    social = 1;
+                    if( ammount > 0)
+                    {
+                        social += ammount * 2;
+                    }
+                    else if (ammount < 0)
+                    {
+                        social += Mathf.RoundToInt(ammount / 2);
+                    }
+                    
                 }
                 else
                 {
@@ -173,10 +180,16 @@ public class Country_M : MonoBehaviour
 
             case "economic":
 
-                if ((economic += ammount) < -5 && skillID == 0)
+                if (skillID == 0)
                 {
-                    actualEcon = economic += ammount;
-                    economic = 1;
+                    if (ammount > 0)
+                    {
+                        economic += ammount * 2;
+                    }
+                    else if (ammount < 0)
+                    {
+                        economic += Mathf.RoundToInt(ammount / 2);
+                    }
                 }
                 else
                 {
@@ -187,10 +200,16 @@ public class Country_M : MonoBehaviour
 
             case "ecologic":
 
-                if ((ecologic += ammount) < -5 && skillID == 1)
+                if (skillID == 1)
                 {
-                    actualEco = ecologic += ammount;
-                    ecologic = 1;
+                    if (ammount > 0)
+                    {
+                        ecologic += ammount * 2;
+                    }
+                    else if (ammount < 0)
+                    {
+                        ecologic += Mathf.RoundToInt(ammount / 2);
+                    }
                 }
                 else
                 {
