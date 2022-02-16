@@ -281,71 +281,71 @@ public class AdvisorManager : MonoBehaviour
             case 10: //Increases the stat by a fixed amount
                 if (advisorID == 1)
                 {
-                    selectedCountryGetter.selectedCountry.economic += 2;
+                    selectedCountryGetter.selectedCountry.TakeDamage("economic",2);
                 }
                 else if (advisorID == 2)
                 {
-                    selectedCountryGetter.selectedCountry.ecologic += 2;
+                    selectedCountryGetter.selectedCountry.TakeDamage("ecologic", 2);
                 }
                 else if (advisorID == 3)
                 {
-                    selectedCountryGetter.selectedCountry.social += 2;
+                    selectedCountryGetter.selectedCountry.TakeDamage("social", 2);
                 }
                 break;
             case 11: //Increases the stat randomly
                 if (advisorID == 1)
                 {
-                    selectedCountryGetter.selectedCountry.economic += Random.Range(1, 5);
+                    selectedCountryGetter.selectedCountry.TakeDamage("economic", Random.Range(1, 5));
                 }
                 else if (advisorID == 2)
                 {
-                    selectedCountryGetter.selectedCountry.ecologic += Random.Range(1, 5);
+                    selectedCountryGetter.selectedCountry.TakeDamage("ecologic", Random.Range(1, 5));
                 }
                 else if (advisorID == 3)
                 {
-                    selectedCountryGetter.selectedCountry.social += Random.Range(1, 5);
+                    selectedCountryGetter.selectedCountry.TakeDamage("social", Random.Range(1, 5));
                 }
                 break;
             case 20:  // Increases one decreases another random one
                 if (advisorID == 1)
                 {
-                    selectedCountryGetter.selectedCountry.economic += 7;
+                    selectedCountryGetter.selectedCountry.TakeDamage("economic", 7);
 
                     switch (Random.Range(0, 2))
                     {
                         case 0:
-                            selectedCountryGetter.selectedCountry.ecologic -= 3;
+                            selectedCountryGetter.selectedCountry.TakeDamage("ecologic", -3);
                             break;
                         case 1:
-                            selectedCountryGetter.selectedCountry.social -= 3;
+                            selectedCountryGetter.selectedCountry.TakeDamage("social", -3);
                             break;
                     }
                 }
                 else if (advisorID == 2)
                 {
-                    selectedCountryGetter.selectedCountry.ecologic += 7;
+                    selectedCountryGetter.selectedCountry.TakeDamage("ecologic", 7);
 
                     switch (Random.Range(0, 2))
                     {
                         case 0:
-                            selectedCountryGetter.selectedCountry.economic -= 3;
+                            selectedCountryGetter.selectedCountry.TakeDamage("economic", -3);
                             break;
                         case 1:
-                            selectedCountryGetter.selectedCountry.social -= 3;
+                            selectedCountryGetter.selectedCountry.TakeDamage("social", -3);
                             break;
                     }
                 }
                 else if (advisorID == 3)
                 {
-                    selectedCountryGetter.selectedCountry.social += 7;
+                    selectedCountryGetter.selectedCountry.TakeDamage("social", 7);
 
                     switch (Random.Range(0, 2))
                     {
                         case 0:
-                            selectedCountryGetter.selectedCountry.ecologic -= 3;
+                            selectedCountryGetter.selectedCountry.TakeDamage("ecologic", -3);
                             break;
                         case 1:
-                            selectedCountryGetter.selectedCountry.economic -= 3;
+                            selectedCountryGetter.selectedCountry.TakeDamage("economic", -3);
                             break;
                     }
                 }
@@ -353,46 +353,45 @@ public class AdvisorManager : MonoBehaviour
             case 21: //Increases a stat, reduces all other randomly;
                 if (advisorID == 1)
                 {
-                    selectedCountryGetter.selectedCountry.economic += 7;
-                    selectedCountryGetter.selectedCountry.ecologic -= Random.Range(1, 3);
-                    selectedCountryGetter.selectedCountry.social -= Random.Range(1, 3);
+                    selectedCountryGetter.selectedCountry.TakeDamage("economic", 7);
+                    selectedCountryGetter.selectedCountry.TakeDamage("ecologic", -Random.Range(1, 3));
+                    selectedCountryGetter.selectedCountry.TakeDamage("social", -Random.Range(1, 3));
                 }
                 else if (advisorID == 2)
                 {
-                    selectedCountryGetter.selectedCountry.ecologic += 7;
-                    selectedCountryGetter.selectedCountry.economic -= Random.Range(1, 3);
-                    selectedCountryGetter.selectedCountry.social -= Random.Range(1, 3);
+                    selectedCountryGetter.selectedCountry.TakeDamage("ecologic", 7);
+                    selectedCountryGetter.selectedCountry.TakeDamage("economic", -Random.Range(1, 3));
+                    selectedCountryGetter.selectedCountry.TakeDamage("social", -Random.Range(1, 3));
                 }
                 else if (advisorID == 3)
                 {
-                    selectedCountryGetter.selectedCountry.social += 7;
-                    selectedCountryGetter.selectedCountry.economic -= Random.Range(1, 3);
-                    selectedCountryGetter.selectedCountry.ecologic -= Random.Range(1, 3);
+                    selectedCountryGetter.selectedCountry.TakeDamage("social", 7);
+                    selectedCountryGetter.selectedCountry.TakeDamage("economic", -Random.Range(1, 3));
+                    selectedCountryGetter.selectedCountry.TakeDamage("ecologic", -Random.Range(1, 3));
                 }
                 break;
             case 30: // Inverts all stats
-                selectedCountryGetter.selectedCountry.economic *= -1;
-                selectedCountryGetter.selectedCountry.ecologic *= -1;
-                selectedCountryGetter.selectedCountry.social *= -1;
+                selectedCountryGetter.selectedCountry.InvertStats();
                 break;
             case 31: // Heals a stat by a ton damages all other stats by a ton as well
                 if (advisorID == 1)
                 {
-                    selectedCountryGetter.selectedCountry.economic += 15;
-                    selectedCountryGetter.selectedCountry.ecologic -= Random.Range(4, 9);
-                    selectedCountryGetter.selectedCountry.social -= Random.Range(4, 9);
+
+                    selectedCountryGetter.selectedCountry.TakeDamage("economic", 15);
+                    selectedCountryGetter.selectedCountry.TakeDamage("ecologic", -Random.Range(4, 9));
+                    selectedCountryGetter.selectedCountry.TakeDamage("social", -Random.Range(4, 9));
                 }
                 else if (advisorID == 2)
                 {
-                    selectedCountryGetter.selectedCountry.ecologic += 15;
-                    selectedCountryGetter.selectedCountry.social -= Random.Range(4, 9);
-                    selectedCountryGetter.selectedCountry.economic -= Random.Range(4, 9);
+                    selectedCountryGetter.selectedCountry.TakeDamage("ecologic", 15);
+                    selectedCountryGetter.selectedCountry.TakeDamage("economic", -Random.Range(4, 9));
+                    selectedCountryGetter.selectedCountry.TakeDamage("social", -Random.Range(4, 9));
                 }
                 else if (advisorID == 3)
                 {
-                    selectedCountryGetter.selectedCountry.social += 15;
-                    selectedCountryGetter.selectedCountry.ecologic -= Random.Range(4, 9);
-                    selectedCountryGetter.selectedCountry.economic -= Random.Range(4, 9);
+                    selectedCountryGetter.selectedCountry.TakeDamage("social", 15);
+                    selectedCountryGetter.selectedCountry.TakeDamage("ecologic", -Random.Range(4, 9));
+                    selectedCountryGetter.selectedCountry.TakeDamage("economic", -Random.Range(4, 9));
                 }
                 break;
         }

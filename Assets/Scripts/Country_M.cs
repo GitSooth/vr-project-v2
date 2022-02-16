@@ -19,12 +19,16 @@ public class Country_M : MonoBehaviour
     public int economic, ecologic, social;
     public int econGrowth, ecoGrowth, socialGrowth;
 
+    public int actualEcon, actualEco, actualSocial;
+
     public int min, max;
     public Skill skill;
 
     public float chanceToGetHit;
 
     private GameManagerGeneral worldGameManager;
+
+    public int skillID;
 
     void Start()
     {
@@ -42,6 +46,21 @@ public class Country_M : MonoBehaviour
     {
         CalculateChanceToGetHit();
         LimitStats();
+
+        if(social<-5 && skillID == 2)
+        {
+            social = 1;
+        }
+
+        if (economic < -5 && skillID == 0)
+        {
+            economic = 1;
+        }
+
+        if (ecologic < -5 && skillID == 1)
+        {
+            ecologic = 1;
+        }
     }
 
     void SetInitialStats()
@@ -49,6 +68,8 @@ public class Country_M : MonoBehaviour
         chanceToGetHit = 0;
 
         int s = Random.Range(0, 3);
+
+        skillID = s;
 
         switch (s)
         {
@@ -88,6 +109,10 @@ public class Country_M : MonoBehaviour
                 break;
         }
 
+        actualEco = ecologic;
+        actualEcon = economic;
+        actualSocial = social;
+
         max = 10;
         min = -10;
     }
@@ -126,5 +151,61 @@ public class Country_M : MonoBehaviour
             ecologic = min;
         if (ecologic > max)
             ecologic = max;
+    }
+
+    public void TakeDamage(string type, int ammount)
+    {
+        switch (type)
+        {
+            case "social":
+
+                if((social += ammount) < -5 && skillID == 2)
+                {
+                    actualSocial = social += ammount;
+                    social = 1;
+                }
+                else
+                {
+                    social += ammount;
+                }
+
+                break;
+
+            case "economic":
+
+                if ((economic += ammount) < -5 && skillID == 0)
+                {
+                    actualEcon = economic += ammount;
+                    economic = 1;
+                }
+                else
+                {
+                    economic += ammount;
+                }
+
+                break;
+
+            case "ecologic":
+
+                if ((ecologic += ammount) < -5 && skillID == 1)
+                {
+                    actualEco = ecologic += ammount;
+                    ecologic = 1;
+                }
+                else
+                {
+                    ecologic += ammount;
+                }
+
+                break;
+        }
+    }
+
+    public void InvertStats()
+    {
+
+        social *= -1;
+        ecologic *= -1;
+        economic *= -1;
     }
 }
