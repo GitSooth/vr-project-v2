@@ -10,7 +10,7 @@ public enum Skill
     ecology
 }
 
-public class Country_M : MonoBehaviour
+public class Continente : MonoBehaviour
 {
     public int id;
     public string countryName;
@@ -47,7 +47,7 @@ public class Country_M : MonoBehaviour
         CalculateChanceToGetHit();
         LimitStats();
 
-        if(social<-5 && skillID == 2)
+        if (social < -5 && skillID == 2)
         {
             social = 1;
         }
@@ -159,9 +159,9 @@ public class Country_M : MonoBehaviour
         {
             case "social":
 
-                if(skillID == 2 )
+                if (skillID == 2)
                 {
-                    if( ammount > 0)
+                    if (ammount > 0)
                     {
                         social += ammount * 2;
                     }
@@ -169,7 +169,7 @@ public class Country_M : MonoBehaviour
                     {
                         social += Mathf.RoundToInt(ammount / 2);
                     }
-                    
+
                 }
                 else
                 {

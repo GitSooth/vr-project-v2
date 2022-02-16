@@ -97,7 +97,7 @@ public class AdvisorManager : MonoBehaviour
                     adviseText0.SetText("You believe " + selectedCountryGetter.selectedCountry.name + " is in need of economical support? Here's my offer.");
                     CalculateOffer(1);
                     advisorID = 1;
-                    tvString = "Breaking News: "+ selectedCountryGetter.selectedCountry.name +" has adopted a new economical policy!";
+                    tvString = "Breaking News: " + selectedCountryGetter.selectedCountry.name + " has adopted a new economical policy!";
                     break;
 
                 case 2: //Ecological
@@ -281,7 +281,7 @@ public class AdvisorManager : MonoBehaviour
             case 10: //Increases the stat by a fixed amount
                 if (advisorID == 1)
                 {
-                    selectedCountryGetter.selectedCountry.TakeDamage("economic",2);
+                    selectedCountryGetter.selectedCountry.TakeDamage("economic", 2);
                 }
                 else if (advisorID == 2)
                 {

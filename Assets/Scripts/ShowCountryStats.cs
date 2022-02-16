@@ -6,9 +6,9 @@ using TMPro;
 
 public class ShowCountryStats : MonoBehaviour
 {
-    public Country_M selectedCountry;
+    public Continente selectedCountry;
     public GameObject StatsCanvas;
-    public Country_M africa, asia, europe, oceania, southAmerica, northAmerica;
+    public Continente africa, asia, europe, oceania, southAmerica, northAmerica;
 
     public TextMeshProUGUI _name, social, economic, ecologic;
 

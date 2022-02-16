@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class FreeLook : MonoBehaviour
 {
     public ShowCountryStats stats;
-    public Country_M selectedStats;
+    public Continente selectedStats;
     public float sensitivity, distance;
     public GameObject selected;
     float mouseX, mouseY;

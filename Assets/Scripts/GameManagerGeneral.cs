@@ -11,7 +11,7 @@ public class GameManagerGeneral : MonoBehaviour
     public float timeBetweenTicks = 2f;
 
     [Header("Country Vars")]
-    public Country_M[] countries;
+    public Continente[] countries;
 
     [SerializeField]
     private TextMeshProUGUI advisorText;
@@ -68,6 +68,8 @@ public class GameManagerGeneral : MonoBehaviour
         randomRange = 0;
 
         graceTimerIsOn = true;
+
+        mat.color = Color.white;
     }
 
     void Update()
@@ -313,9 +315,9 @@ public class GameManagerGeneral : MonoBehaviour
 
     private int FindStrongestCountry()
     {
-        Country_M country = null;
+        Continente country = null;
 
-        foreach (Country_M c in countries)
+        foreach (Continente c in countries)
         {
             int val = (int)c.chanceToGetHit;
 
@@ -328,9 +330,9 @@ public class GameManagerGeneral : MonoBehaviour
 
     private int FindWeakestCountry()
     {
-        Country_M country = null;
+        Continente country = null;
 
-        foreach (Country_M c in countries)
+        foreach (Continente c in countries)
         {
             int val = (int)c.chanceToGetHit;
 
@@ -372,7 +374,7 @@ public class GameManagerGeneral : MonoBehaviour
 
     public void ChangeStats()
     {
-        foreach (Country_M c in countries)
+        foreach (Continente c in countries)
         {
             c.social += c.socialGrowth;
             c.ecologic += c.ecoGrowth;
