@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class AdvisorManager : MonoBehaviour
 {
@@ -14,7 +15,10 @@ public class AdvisorManager : MonoBehaviour
     private float advisorTimerMax = 30;
 
     [SerializeField]
-    private TextMeshProUGUI advisorTimerText, adviseText0, adviseText;
+    private TextMeshProUGUI advisorTimerText, adviseText0, adviseText, tvText;
+
+    [SerializeField]
+    private Image tvImage;
 
     public GameObject[] beforeChoice;
     public GameObject[] postChoice;
@@ -23,6 +27,10 @@ public class AdvisorManager : MonoBehaviour
 
     public int offerID, advisorID;
     private int beforeObjects, postObjects;
+
+    private string tvString;
+
+    public Sprite[] advisorImages;
 
     // Start is called before the first frame update
     void Start()
@@ -78,6 +86,8 @@ public class AdvisorManager : MonoBehaviour
     public void Advise(int advisorOrigin)
     {
 
+        tvString = "";
+
         if (selectedCountryGetter.selectedCountry != null)
         {
             switch (advisorOrigin)
@@ -87,18 +97,21 @@ public class AdvisorManager : MonoBehaviour
                     adviseText0.SetText("You believe " + selectedCountryGetter.selectedCountry.name + " is in need of economical support? Here's my offer.");
                     CalculateOffer(1);
                     advisorID = 1;
+                    tvString = "Breaking News: "+ selectedCountryGetter.selectedCountry.name +" has adopted a new economical policy!";
                     break;
 
                 case 2: //Ecological
                     adviseText0.SetText("I see " + selectedCountryGetter.selectedCountry.name + " is in need of ecological support, here's my offer.");
                     CalculateOffer(2);
                     advisorID = 2;
+                    tvString = "Breaking News: " + selectedCountryGetter.selectedCountry.name + " has adopted a new ecological policy!";
                     break;
 
                 case 3: //Social
                     adviseText0.SetText("If the people of " + selectedCountryGetter.selectedCountry.name + " are in need, here's my offer.");
                     CalculateOffer(3);
                     advisorID = 3;
+                    tvString = "Breaking News: " + selectedCountryGetter.selectedCountry.name + " has adopted a new social policy!";
                     break;
             }
 
@@ -390,6 +403,8 @@ public class AdvisorManager : MonoBehaviour
         adviseText0.SetText("The deal is done.");
         adviseText.SetText("");
         advisorTimer += advisorTimerMax - 5;
+        tvText.SetText(tvString);
+        tvImage.sprite = advisorImages[advisorID];
     }
 
     public void RejectOffer()
